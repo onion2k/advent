@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two');
+
 body {
-    font-family: sans-serif;
+    background-image: url('https://source.unsplash.com/qQUtvVdurHg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
