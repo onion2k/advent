@@ -5,4 +5,5 @@
     grid-template-rows: repeat(5, 18vmin);
     grid-gap: 20px;
     justify-content: center;
+    perspective: 1000px;
 }

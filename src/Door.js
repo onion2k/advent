@@ -6,7 +6,7 @@ class Door extends Component {
     render() {
 
         return (
-            <div className={'Door'+(this.props.number==="24"?' double':'')}>
+            <div className={'Door'+(this.props.number==="24"?' double':'')+(this.props.number==="13"?' open':'')}>
                 { this.props.number }
             </div>
         );

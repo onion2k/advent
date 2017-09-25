@@ -8,8 +8,14 @@
     font-family: 'Lobster Two';
     border-radius: 5px;
     border-left: 2px dashed #aaa;
+    transition: 2s linear;
+    transform-origin: 0% 0%;
 }
 
 .double {
     grid-column: span 2;
+}
+
+.open {
+    transform: rotateY(-120deg);
 }
