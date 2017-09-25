@@ -1,0 +1,9 @@
+.Advent {
+    display: grid;
+    margin: 15px;
+    grid-template-columns: repeat(6, 15vmin);
+    grid-template-rows: repeat(4, 15vmin);
+    grid-gap: 30px;
+    justify-content: center;
+    align-content: center;
+}
