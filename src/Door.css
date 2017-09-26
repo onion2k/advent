@@ -7,7 +7,9 @@
 
 .Door {
     position: relative;
-    background-color: #fff;
+    background-image: url('https://source.unsplash.com/qQUtvVdurHg');
+    background-repeat: no-repeat;
+    background-size: auto 1200px;
     color: #000;
     display: grid;
     align-content: center;
@@ -16,6 +18,9 @@
     font-family: 'Lobster Two';
     border-radius: 5px;
     border-left: 2px dashed #aaa;
+    border-right: 1px dotted #aaa;
+    border-top: 1px dotted #aaa;
+    border-bottom: 1px dotted #aaa;
     transition: 0.5s linear;
     transform-origin: 0% 0%;
     transform-style: preserve-3d;
