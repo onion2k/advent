@@ -16,12 +16,14 @@ class Door extends Component {
     render() {
 
         return (
-            <div className={'Door'+(this.props.number==="24"?' double':'')+(this.state.open===true?' open':'')} onClick={ this.onClick }>
-                <div className="front">
-                    { this.props.number }
+            <div className={'Window'+(this.props.number==="24"?' double':'')}>
+                <div className={'Door'+(this.state.open===true?' open':'')} onClick={ this.onClick }>
+                    <div className="front">
+                        { this.props.number }
+                    </div>
+                    <div className="back">Merry Christmas</div>
                 </div>
-                <div className="back">Merry Christmas</div>
-                <div className="window">Yo</div>
+                <div className="Picture">Yo</div>
             </div>
         );
     }

@@ -1,3 +1,10 @@
+.Window {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
 .Door {
     position: relative;
     background-color: #fff;
@@ -12,6 +19,8 @@
     transition: 0.5s linear;
     transform-origin: 0% 0%;
     transform-style: preserve-3d;
+    z-index: 2;
+    cursor: pointer;
 }
 
 .front, .back {
@@ -44,6 +53,17 @@
 }
 
 .open {
-    transform: rotateY(-130deg);
+    transform: rotateY(-160deg);
     z-index: 99;
+}
+
+.Picture {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    background-color: #0f0;
+    border-radius: 5px;
+	z-index: 1;
 }
