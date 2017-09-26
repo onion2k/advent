@@ -63,7 +63,8 @@
     left: 5px;
     right: 5px;
     bottom: 5px;
-    background-color: #0f0;
+    background-image: url('https://source.unsplash.com/aw4ctKdmC7k');
+    background-size: cover;
     border-radius: 5px;
 	z-index: 1;
 }
