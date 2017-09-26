@@ -23,7 +23,7 @@
     border-right: 1px dotted #ddd;
     border-top: 1px dotted #ddd;
     border-bottom: 1px dotted #ddd;
-    transition: 0.5s linear;
+    transition: transform 0.5s linear;
     transform-origin: 0% 0%;
     transform-style: preserve-3d;
     z-index: 2;
