@@ -1,6 +1,7 @@
 .Door {
-    background-color: rgba(255,255,255,0.4);
-    color: #fff;
+    position: relative;
+    background-color: #fff;
+    color: #000;
     display: grid;
     align-content: center;
     justify-content: center;
@@ -8,14 +9,41 @@
     font-family: 'Lobster Two';
     border-radius: 5px;
     border-left: 2px dashed #aaa;
-    transition: 2s linear;
+    transition: 0.5s linear;
     transform-origin: 0% 0%;
+    transform-style: preserve-3d;
+}
+
+.front, .back {
+    backface-visibility: hidden;
+}
+
+.front {
+	z-index: 2;
 }
 
 .double {
     grid-column: span 2;
 }
 
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    color: #eee;
+    transform: rotateY(180deg);
+    opacity: 1;
+    z-index: 1;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    font-size: 2.0rem;
+}
+
 .open {
-    transform: rotateY(-120deg);
+    transform: rotateY(-130deg);
+    z-index: 99;
 }
