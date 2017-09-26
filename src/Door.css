@@ -3,6 +3,8 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    perspective: 600px;
+    perspective-origin: 0% 50%;
 }
 
 .Door {
@@ -10,17 +12,17 @@
     background-image: url('https://source.unsplash.com/qQUtvVdurHg');
     background-repeat: no-repeat;
     background-size: auto 1200px;
-    color: #000;
+    color: #fff;
     display: grid;
     align-content: center;
     justify-content: center;
     font-size: 3.0rem;
     font-family: 'Lobster Two';
     border-radius: 5px;
-    border-left: 2px dashed #aaa;
-    border-right: 1px dotted #aaa;
-    border-top: 1px dotted #aaa;
-    border-bottom: 1px dotted #aaa;
+    border-left: 2px dashed #ddd;
+    border-right: 1px dotted #ddd;
+    border-top: 1px dotted #ddd;
+    border-bottom: 1px dotted #ddd;
     transition: 0.5s linear;
     transform-origin: 0% 0%;
     transform-style: preserve-3d;
@@ -54,11 +56,14 @@
     display: grid;
     align-content: center;
     justify-content: center;
-    font-size: 2.0rem;
+    font-size: 1.5rem;
 }
 
 .open {
-    transform: rotateY(-160deg);
+    transform: rotateY(-130deg);
+}
+
+.opened {
     z-index: 99;
 }
 
@@ -68,8 +73,8 @@
     left: 5px;
     right: 5px;
     bottom: 5px;
-    background-image: url('https://source.unsplash.com/aw4ctKdmC7k');
     background-size: cover;
+    background-position: center center;
     border-radius: 5px;
 	z-index: 1;
 }
