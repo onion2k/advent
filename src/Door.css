@@ -11,7 +11,7 @@
     position: relative;
     background-image: url('https://source.unsplash.com/qQUtvVdurHg');
     background-repeat: no-repeat;
-    background-size: auto 1200px;
+    background-size: auto 100vh;
     color: #fff;
     display: grid;
     align-content: center;
@@ -26,7 +26,7 @@
     transition: transform 0.5s linear;
     transform-origin: 0% 0%;
     transform-style: preserve-3d;
-    z-index: 2;
+    z-index: 199;
     cursor: pointer;
 }
 
@@ -40,6 +40,7 @@
 
 .double {
     grid-column: span 2;
+    perspective: 1200px;
 }
 
 .back {
@@ -64,6 +65,10 @@
 }
 
 .opened {
+    z-index: 99;
+}
+
+.animating {
     z-index: 99;
 }
 
