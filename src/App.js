@@ -35,12 +35,14 @@ class App extends Component {
                 {number:"24", image:"https://source.unsplash.com/SSxIGsySh8o"}
             ]
         }
-
     }
+
     render() {
 
         let _doors = this.state.doors;
-        //    _doors.sort(function(door) { return 0.5 - Math.random() });
+        let l = _doors.pop();
+
+        _doors.sort(function(door) { return 0.5 - Math.random() }).push(l);
 
         let doors = _doors.map((door)=>{
             return <Door key={door.number} number={door.number} image={door.image}></Door>
