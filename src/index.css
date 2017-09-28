@@ -3,4 +3,9 @@
 body {
     margin: 0;
     padding: 0;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
 }

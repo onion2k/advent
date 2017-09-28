@@ -1,14 +1,14 @@
 .Advent {
-    display: grid;
     margin: 0;
-    padding: 30px;
-    grid-template-columns: repeat(5, 18vmin);
-    grid-template-rows: repeat(5, 18vmin);
-    grid-gap: 20px;
+    padding: 3vh;
+    display: grid;
+    grid-template-columns: repeat(5, 18vh);
+    grid-template-rows: repeat(5, 18vh);
+    grid-gap: 1vh;
     justify-content: center;
 
     background-repeat: no-repeat;
-    background-size: auto 100vh;
+    background-size: cover;
     background-position: 0px 0px;
     
 }
