@@ -43,7 +43,7 @@ class App extends Component {
             bg: '',
             bgUrl: 'https://source.unsplash.com/qQUtvVdurHg',
             doors: _doors,
-            ready: true
+            ready: false
         }
 
         let calImg = new Image();
@@ -63,13 +63,13 @@ class App extends Component {
             style = { backgroundImage: 'url('+this.state.bgUrl+')' };
         }
 
-        let doorsEl = this.state.doors.map((door)=>{
+        let doors = this.state.doors.map((door)=>{
             return <Door key={door.number} number={door.number} image={door.image} ready={ this.state.ready }></Door>
         })
 
         return (
             <div className="Advent" style={ style }>
-                {doorsEl}
+                {doors}
             </div>
         );
     }

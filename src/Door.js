@@ -31,6 +31,7 @@ class Door extends Component {
     }
 
     componentWillReceiveProps(nextProps){
+        console.log(nextProps);
         this.setState({ ready: nextProps.ready });
     }
 
