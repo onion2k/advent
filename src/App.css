@@ -1,8 +1,13 @@
 .Advent {
     display: grid;
-    margin: 10px;
+    margin: 0;
+    padding: 30px;
     grid-template-columns: repeat(5, 18vmin);
     grid-template-rows: repeat(5, 18vmin);
     grid-gap: 20px;
     justify-content: center;
+
+    background-repeat: no-repeat;
+    background-size: auto 100vh;
+
 }
