@@ -9,7 +9,8 @@ class Door extends Component {
         super(props);
         
         this.state = {
-            open: false, 
+            ready: true,
+            open: false,
             animating: false,
             bg: '',
             bgUrl: props.image,

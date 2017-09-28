@@ -43,7 +43,7 @@ class App extends Component {
             bg: '',
             bgUrl: 'https://source.unsplash.com/qQUtvVdurHg',
             doors: _doors,
-            ready: false
+            ready: true
         }
 
         let calImg = new Image();
@@ -53,15 +53,14 @@ class App extends Component {
     }
 
     onLoad(){
-        this.setState({ ready: true, bg: this.state.bgUrl });
+        this.setState({ ready: true });
     }
 
     render() {
-
         let style = {};
-        
+
         if (this.state.ready) {
-            style = { backgroundImage: 'url('+this.state.bg+')' };
+            style = { backgroundImage: 'url('+this.state.bgUrl+')' };
         }
 
         let doorsEl = this.state.doors.map((door)=>{

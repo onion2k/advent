@@ -13,7 +13,12 @@
 }
 
 .Door {
-    position: relative;
+    padding: 0;
+    margin: 0;
+    border-left: 2px dashed #ddd;
+    border-right: 1px dotted #ddd;
+    border-top: 1px dotted #ddd;
+    border-bottom: 1px dotted #ddd;
     background-image: url('https://source.unsplash.com/qQUtvVdurHg');
     background-repeat: no-repeat;
     background-size: auto 100vh;
@@ -24,10 +29,6 @@
     font-size: 3.0rem;
     font-family: 'Lobster Two';
     border-radius: 5px;
-    border-left: 2px dashed #ddd;
-    border-right: 1px dotted #ddd;
-    border-top: 1px dotted #ddd;
-    border-bottom: 1px dotted #ddd;
     transition: transform 0.5s linear;
     transform-origin: 0% 0%;
     transform-style: preserve-3d;
