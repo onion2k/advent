@@ -23,6 +23,7 @@ class Door extends Component {
 
         this.onClick = this.onClick.bind(this);
         this.animating = this.animating.bind(this);
+        this.bgPos = this.bgPos.bind(this);
 
     }
 
@@ -36,12 +37,18 @@ class Door extends Component {
 
     componentDidMount(){
 
-        var el = ReactDOM.findDOMNode(this).getBoundingClientRect();
-        this.setState({ backgroundPosition: (-1*el.left)+"px "+(-1*el.top)+"px" });
-
+        window.addEventListener('resize', this.bgPos);
+        
         this.refs.door.addEventListener('transitionstart', this.animating);
         this.refs.door.addEventListener('transitionend', this.animating);
+
+        this.bgPos();
         
+    }
+
+    bgPos(){
+        var el = ReactDOM.findDOMNode(this).getBoundingClientRect();
+        this.setState({ backgroundPosition: (-1*el.left)+"px "+(-1*el.top)+"px" });
     }
 
     animating () {

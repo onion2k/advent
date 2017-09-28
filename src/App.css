@@ -8,7 +8,7 @@
     justify-content: center;
 
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100vw auto;
     background-position: 0px 0px;
     
 }
