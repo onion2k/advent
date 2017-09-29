@@ -7,11 +7,6 @@
     perspective-origin: 0% 50%;
 }
 
-.double {
-    grid-column: span 2;
-    perspective: 2000px;
-}
-
 .Door {
     padding: 0;
     margin: 0;
@@ -19,9 +14,9 @@
     border-right: 1px dotted #ddd;
     border-top: 1px dotted #ddd;
     border-bottom: 1px dotted #ddd;
-    background-image: url('https://source.unsplash.com/qQUtvVdurHg');
+    background-image: url('https://source.unsplash.com/UIlHiyFy0Wk');
     background-repeat: no-repeat;
-    background-size: 100vw auto;
+    background-size: auto 100vh;
     color: #fff;
     display: grid;
     align-content: center;
@@ -34,6 +29,19 @@
     transform-style: preserve-3d;
     z-index: 199;
     cursor: pointer;
+}
+
+@media only screen and (min-aspect-ratio: 1/1) {
+
+    .Door {
+        background-size: auto 100vh;
+    }
+
+    .double {
+        grid-column: span 2;
+        perspective: 2000px;
+    }
+
 }
 
 .front, .back {

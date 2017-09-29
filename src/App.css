@@ -2,13 +2,21 @@
     margin: 0;
     padding: 3vh;
     display: grid;
-    grid-template-columns: repeat(5, 18vh);
-    grid-template-rows: repeat(5, 18vh);
+    grid-template-columns: repeat(4, 15vw);
+    grid-template-rows: repeat(6, 15vw);
     grid-gap: 1vh;
     justify-content: center;
 
     background-repeat: no-repeat;
-    background-size: 100vw auto;
+    background-size: auto 100vh;
     background-position: 0px 0px;
-    
+
+}
+
+@media only screen and (min-aspect-ratio: 1/1) {
+    /* Landscape */
+    .Advent {
+        grid-template-columns: repeat(5, 18vh);
+        grid-template-rows: repeat(5, 18vh);
+    }
 }
