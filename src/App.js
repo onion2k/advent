@@ -6,6 +6,7 @@ import Door from './Door.js';
 class App extends Component {
 
     constructor() {
+
         super();
 
         let _doors = [
@@ -43,17 +44,33 @@ class App extends Component {
             bg: '',
             bgUrl: 'https://source.unsplash.com/UIlHiyFy0Wk',
             doors: _doors,
-            ready: false
+            ready: false,
+            door: 0
         }
 
         let calImg = new Image();
         calImg.addEventListener('load', this.onLoad.bind(this), false);
         calImg.src = this.state.bgUrl;
 
+        this.onClick = this.onClick.bind(this);
+
     }
 
     onLoad(){
         this.setState({ ready: true });
+    }
+
+    onClick(door){
+
+        let doorInt = parseInt(door, 10);
+
+        if (doorInt===(this.state.door+1)){
+            this.setState({ door: doorInt })
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     render() {
@@ -64,7 +81,7 @@ class App extends Component {
         }
 
         let doors = this.state.doors.map((door)=>{
-            return <Door key={door.number} number={door.number} image={door.image} ready={ this.state.ready }></Door>
+            return <Door key={door.number} onClick={this.onClick} number={door.number} image={door.image} ready={ this.state.ready }></Door>
         })
 
         return (

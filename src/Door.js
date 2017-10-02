@@ -9,6 +9,7 @@ class Door extends Component {
         super(props);
         
         this.state = {
+            clickCallback: props.onClick,
             ready: true,
             open: false,
             animating: false,
@@ -56,7 +57,9 @@ class Door extends Component {
     }
 
     onClick(){
-        this.setState({ open: !this.state.open, animating: !this.state.animating });
+        if (this.state.clickCallback(this.props.number)){
+            this.setState({ open: !this.state.open, animating: !this.state.animating });
+        }
     }
 
     render() {
