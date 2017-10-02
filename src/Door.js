@@ -11,7 +11,7 @@ class Door extends Component {
         this.state = {
             clickCallback: props.onClick,
             ready: true,
-            open: false,
+            open: props.open,
             animating: false,
             bg: '',
             bgUrl: props.image,

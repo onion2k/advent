@@ -10,34 +10,38 @@ class App extends Component {
         super();
 
         let _doors = [
-            {number:"01", image:"https://source.unsplash.com/NzQknDofRpc"},
-            {number:"02", image:"https://source.unsplash.com/z0nZ229ifFw"},
-            {number:"03", image:"https://source.unsplash.com/mXvgSOsnPx0"},
-            {number:"04", image:"https://source.unsplash.com/xLGtGvH0A8g"},
-            {number:"05", image:"https://source.unsplash.com/r53rNKb_7s8"},
-            {number:"06", image:"https://source.unsplash.com/WsDF95mSUsI"},
-            {number:"07", image:"https://source.unsplash.com/iZTMUjrvX4c"},
-            {number:"08", image:"https://source.unsplash.com/u2n4LFarEMI"},
-            {number:"09", image:"https://source.unsplash.com/7AzZqUXYCac"},
-            {number:"10", image:"https://source.unsplash.com/VfWkdMue5Jc"},
-            {number:"11", image:"https://source.unsplash.com/dABKxsPTAEk"},
-            {number:"12", image:"https://source.unsplash.com/NizoYtO0yiY"},
-            {number:"13", image:"https://source.unsplash.com/FQ5N5gb9Cao"},
-            {number:"14", image:"https://source.unsplash.com/vJz7tkHncFk"},
-            {number:"15", image:"https://source.unsplash.com/JsjXnWlh8-g"},
-            {number:"16", image:"https://source.unsplash.com/G8ooPghadAY"},
-            {number:"17", image:"https://source.unsplash.com/rtMiBkMCOsw"},
-            {number:"18", image:"https://source.unsplash.com/Gork0BACw2I"},
-            {number:"19", image:"https://source.unsplash.com/k0SwnevO_wk"},
-            {number:"20", image:"https://source.unsplash.com/2gSfZ9Baph8"},
-            {number:"21", image:"https://source.unsplash.com/qQUtvVdurHg"},
-            {number:"22", image:"https://source.unsplash.com/GAJ4g8f7FBk"},
-            {number:"23", image:"https://source.unsplash.com/O1gHgEagQ9U"},
-            {number:"24", image:"https://source.unsplash.com/SSxIGsySh8o"}
+            {number:"01", image:"https://source.unsplash.com/NzQknDofRpc", open: false },
+            {number:"02", image:"https://source.unsplash.com/z0nZ229ifFw", open: false },
+            {number:"03", image:"https://source.unsplash.com/mXvgSOsnPx0", open: false },
+            {number:"04", image:"https://source.unsplash.com/xLGtGvH0A8g", open: false },
+            {number:"05", image:"https://source.unsplash.com/r53rNKb_7s8", open: false },
+            {number:"06", image:"https://source.unsplash.com/WsDF95mSUsI", open: false },
+            {number:"07", image:"https://source.unsplash.com/iZTMUjrvX4c", open: false },
+            {number:"08", image:"https://source.unsplash.com/u2n4LFarEMI", open: false },
+            {number:"09", image:"https://source.unsplash.com/7AzZqUXYCac", open: false },
+            {number:"10", image:"https://source.unsplash.com/VfWkdMue5Jc", open: false },
+            {number:"11", image:"https://source.unsplash.com/dABKxsPTAEk", open: false },
+            {number:"12", image:"https://source.unsplash.com/NizoYtO0yiY", open: false },
+            {number:"13", image:"https://source.unsplash.com/FQ5N5gb9Cao", open: false },
+            {number:"14", image:"https://source.unsplash.com/vJz7tkHncFk", open: false },
+            {number:"15", image:"https://source.unsplash.com/JsjXnWlh8-g", open: false },
+            {number:"16", image:"https://source.unsplash.com/G8ooPghadAY", open: false },
+            {number:"17", image:"https://source.unsplash.com/rtMiBkMCOsw", open: false },
+            {number:"18", image:"https://source.unsplash.com/Gork0BACw2I", open: false },
+            {number:"19", image:"https://source.unsplash.com/k0SwnevO_wk", open: false },
+            {number:"20", image:"https://source.unsplash.com/2gSfZ9Baph8", open: false },
+            {number:"21", image:"https://source.unsplash.com/qQUtvVdurHg", open: false },
+            {number:"22", image:"https://source.unsplash.com/GAJ4g8f7FBk", open: false },
+            {number:"23", image:"https://source.unsplash.com/O1gHgEagQ9U", open: false },
+            {number:"24", image:"https://source.unsplash.com/SSxIGsySh8o", open: false }
         ];
 
-        let l = _doors.pop();
+        var doorInt = localStorage.getItem('door') || 0;
+            doorInt = parseInt(doorInt, 10);
 
+        _doors.forEach((door)=>{ if (parseInt(door.number, 10) <= doorInt) { door.open = true; } })
+        
+        let l = _doors.pop();
         _doors.sort(function(door) { return 0.5 - Math.random() }).push(l);
         
         this.state = {
@@ -45,7 +49,7 @@ class App extends Component {
             bgUrl: 'https://source.unsplash.com/UIlHiyFy0Wk',
             doors: _doors,
             ready: false,
-            door: 0
+            door: doorInt
         }
 
         let calImg = new Image();
@@ -65,7 +69,8 @@ class App extends Component {
         let doorInt = parseInt(door, 10);
 
         if (doorInt===(this.state.door+1)){
-            this.setState({ door: doorInt })
+            this.setState({ door: doorInt });
+            localStorage.setItem('door', doorInt);
             return true;
         } else {
             return false;
@@ -81,7 +86,7 @@ class App extends Component {
         }
 
         let doors = this.state.doors.map((door)=>{
-            return <Door key={door.number} onClick={this.onClick} number={door.number} image={door.image} ready={ this.state.ready }></Door>
+            return <Door key={door.number} onClick={this.onClick} number={door.number} image={door.image} ready={ this.state.ready } open={door.open} ></Door>
         })
 
         return (
