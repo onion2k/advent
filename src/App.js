@@ -17,6 +17,8 @@ type State = {
 
 class App extends React.Component<Props, State> {
 
+    onClick: Function;
+
     constructor() {
 
         super();
