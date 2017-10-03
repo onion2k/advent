@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './Door.css';
 
-class Door extends Component {
+ class Door extends Component {
 
     constructor(props){
 
@@ -59,6 +59,8 @@ class Door extends Component {
     onClick(){
         if (this.state.clickCallback(this.props.number)){
             this.setState({ open: !this.state.open, animating: !this.state.animating });
+        } else {
+            throw new Error('InvalidDoorNo')
         }
     }
 
