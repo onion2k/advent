@@ -1,9 +1,21 @@
-import React, { Component } from 'react';
+// @flow
+
+import React from 'react';
 import './App.css';
 
 import Door from './Door.js';
 
-class App extends Component {
+type Props = {};
+
+type State = {
+    bg: string,
+    bgUrl: string,
+    doors: Array<{ number: string, image: string, open: boolean }>,
+    ready: boolean,
+    door: number
+};
+
+class App extends React.Component<Props, State> {
 
     constructor() {
 
@@ -36,14 +48,13 @@ class App extends Component {
             {number:"24", image:"https://source.unsplash.com/SSxIGsySh8o", open: false }
         ];
 
-        var doorInt = localStorage.getItem('door') || 0;
-            doorInt = parseInt(doorInt, 10);
+        let doorInt:number = parseInt(localStorage.getItem('door'), 10);
 
         _doors.forEach((door)=>{ if (parseInt(door.number, 10) <= doorInt) { door.open = true; } })
         
         let l = _doors.pop();
         _doors.sort(function(door) { return 0.5 - Math.random() }).push(l);
-        
+
         this.state = {
             bg: '',
             bgUrl: 'https://source.unsplash.com/UIlHiyFy0Wk',
@@ -64,9 +75,9 @@ class App extends Component {
         this.setState({ ready: true });
     }
 
-    onClick(door){
+    onClick(door:string):boolean{
 
-        let doorInt = parseInt(door, 10);
+        let doorInt:number = parseInt(door, 10);
 
         if (doorInt===(this.state.door+1)){
             this.setState({ door: doorInt });
@@ -79,6 +90,7 @@ class App extends Component {
     }
 
     render() {
+
         let style = {};
 
         if (this.state.ready) {
