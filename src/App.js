@@ -83,7 +83,7 @@ class App extends React.Component<Props, State> {
 
         if (doorInt===(this.state.door+1)){
             this.setState({ door: doorInt });
-            localStorage.setItem('door', doorInt);
+            localStorage.setItem('door', String(doorInt));
             return true;
         } else {
             return false;
