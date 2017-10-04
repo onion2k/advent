@@ -1,10 +1,36 @@
-import React, { Component } from 'react';
+// @flow
+
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './Door.css';
 
- class Door extends Component {
+type Props = {
+    onClick: Function,
+    image: string,
+    number: string
+};
 
-    constructor(props){
+type State = {
+    clickCallback: Function,
+    ready: boolean,
+    open: boolean,
+    animating: boolean,
+    bg: string,
+    bgUrl: string,
+    backgroundPosition: string
+};
+
+class Door extends React.Component<Props, State> {
+
+    onLoad: Function;
+    componentWillReceiveProps: Function;
+    componentDidMount: Function;
+    bgPos: Function;
+    animating: Function;
+    onClick: Function;
+    render: Function;
+    
+    constructor(props: Object){
 
         super(props);
         
@@ -32,7 +58,7 @@ import './Door.css';
         this.setState({ bg: this.state.bgUrl });
     }
 
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps:Object){
         this.setState({ ready: nextProps.ready });
     }
 
@@ -48,8 +74,13 @@ import './Door.css';
     }
 
     bgPos(){
-        var el = ReactDOM.findDOMNode(this).getBoundingClientRect();
-        this.setState({ backgroundPosition: (-1*el.left)+"px "+(-1*el.top)+"px" });
+        let el = ReactDOM.findDOMNode(this);
+        if (el instanceof HTMLElement) {
+            let bounds = el.getBoundingClientRect();
+            this.setState({ backgroundPosition: (-1*bounds.left)+"px "+(-1*bounds.top)+"px" });
+        } else {
+            return;            
+        }
     }
 
     animating () {
