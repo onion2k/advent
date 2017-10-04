@@ -99,14 +99,25 @@ class App extends React.Component<Props, State> {
     render() {
 
         let style = {};
+        let doors;
 
-        if (this.state.ready) {
-            style = { backgroundImage: 'url('+this.state.bgUrl+')' };
+        if (this.state.error===true) {
+
+            doors = <div className="Error">Something went wrong. Sorry!<p>An elf is already looking in to it.</p></div>;
+
+        } else {
+
+            if (this.state.ready===true) {
+                style = { backgroundImage: 'url('+this.state.bgUrl+')' };
+            } else {
+                style = { backgroundColor: '#444' };                
+            }
+    
+            doors = this.state.doors.map((door)=>{
+                return <Door key={door.number} onClick={this.onClick} ready={ this.state.ready } {...door}></Door>
+            })
+    
         }
-
-        let doors = this.state.doors.map((door)=>{
-            return <Door key={door.number} onClick={this.onClick} ready={ this.state.ready } {...door}></Door>
-        })
 
         return (
             <div className="Advent" style={ style }>
