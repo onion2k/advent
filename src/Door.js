@@ -104,7 +104,7 @@ class Door extends React.Component<Props, State> {
         }
 
         return (
-            <div className={'Window'+(this.state.open===true?' opened':'')+(this.state.animating===true?' animating':'')+(this.props.number==="24"?' double':'')}>
+            <div className={'Window'+(this.state.open===true?' opened':'')+(this.state.animating===true?' animating':'')+(this.props.number===24?' double':'')}>
                 <div ref="door" className={'Door'+(this.state.open===true?' open':'')} onClick={ this.onClick } style={{ backgroundPosition: this.state.backgroundPosition }}>
                     <div className="front">
                         { this.props.number }
