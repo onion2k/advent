@@ -7,7 +7,7 @@ import './Door.css';
 type Props = {
     onClick: Function,
     image: string,
-    number: string
+    number: number
 };
 
 type State = {
