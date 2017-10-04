@@ -33,10 +33,6 @@
 
 @media only screen and (min-aspect-ratio: 1/1) {
 
-    .Door {
-        background-size: auto 100vh;
-    }
-
     .double {
         grid-column: span 2;
         perspective: 2000px;

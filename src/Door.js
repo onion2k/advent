@@ -77,7 +77,7 @@ class Door extends React.Component<Props, State> {
         let el = ReactDOM.findDOMNode(this);
         if (el instanceof HTMLElement) {
             let bounds = el.getBoundingClientRect();
-            this.setState({ backgroundPosition: (-1*bounds.left)+"px "+(-1*bounds.top)+"px" });
+            this.setState({ backgroundPosition: (-1*bounds.left-1)+"px "+(-1*bounds.top-1)+"px" });
         } else {
             return;            
         }
