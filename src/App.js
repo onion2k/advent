@@ -49,6 +49,8 @@ class App extends React.Component<Props, State> {
         }
 
         let doorInt:number = parseInt(localStorage.getItem('door'), 10);
+        if (!doorInt) { doorInt = 0; }
+        
         let calImg = new Image();
 
         fetch(calendar+'.json').then((calendar:Object)=>{
@@ -90,13 +92,13 @@ class App extends React.Component<Props, State> {
         this.setState({ ready: true });
     }
 
-    onClick(door:string):boolean{
+    onClick(door:number):boolean{
 
-        let doorInt:number = parseInt(door, 10);
+        console.log(this.state.door);
 
-        if (doorInt===(this.state.door+1)){
-            this.setState({ door: doorInt });
-            localStorage.setItem('door', String(doorInt));
+        if (door===(this.state.door+1)){
+            this.setState({ door: door });
+            localStorage.setItem('door', String(door));
             return true;
         } else {
             return false;
@@ -122,7 +124,7 @@ class App extends React.Component<Props, State> {
             }
     
             doors = this.state.doors.map((door)=>{
-                return <Door key={door.number} onClick={this.onClick} ready={ this.state.ready } {...door}></Door>
+                return <Door key={door.number} onClick={this.onClick} ready={ this.state.ready } bg={ this.state.bgUrl } {...door}></Door>
             })
     
         }

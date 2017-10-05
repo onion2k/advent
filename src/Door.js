@@ -7,7 +7,8 @@ import './Door.css';
 type Props = {
     onClick: Function,
     image: string,
-    number: number
+    number: number,
+    bg: string
 };
 
 type State = {
@@ -91,7 +92,7 @@ class Door extends React.Component<Props, State> {
         if (this.state.clickCallback(this.props.number)){
             this.setState({ open: !this.state.open, animating: !this.state.animating });
         } else {
-            throw new Error('InvalidDoorNo')
+            throw new Error('InvalidDoorNo');
         }
     }
 
@@ -105,7 +106,7 @@ class Door extends React.Component<Props, State> {
 
         return (
             <div className={'Window'+(this.state.open===true?' opened':'')+(this.state.animating===true?' animating':'')+(this.props.number===24?' double':'')}>
-                <div ref="door" className={'Door'+(this.state.open===true?' open':'')} onClick={ this.onClick } style={{ backgroundPosition: this.state.backgroundPosition }}>
+                <div ref="door" className={'Door'+(this.state.open===true?' open':'')} onClick={ this.onClick } style={{ backgroundPosition: this.state.backgroundPosition, backgroundImage: 'url('+this.props.bg+')' }}>
                     <div className="front">
                         { this.props.number }
                     </div>
