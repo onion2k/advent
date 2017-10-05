@@ -91,8 +91,6 @@ class Door extends React.Component<Props, State> {
     onClick(){
         if (this.state.clickCallback(this.props.number)){
             this.setState({ open: !this.state.open, animating: !this.state.animating });
-        } else {
-            throw new Error('InvalidDoorNo');
         }
     }
 
