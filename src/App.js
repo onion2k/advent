@@ -40,10 +40,18 @@ class App extends React.Component<Props, State> {
 
     componentWillMount(){
 
+        let calendar:string = window.location.hash.substring(1);
+
+        if (!calendar) {
+            this.setState({
+                error: true
+            });
+        }
+
         let doorInt:number = parseInt(localStorage.getItem('door'), 10);
         let calImg = new Image();
 
-        fetch('calendar.json').then((calendar:Object)=>{
+        fetch(calendar+'.json').then((calendar:Object)=>{
 
             return calendar.json();
 
