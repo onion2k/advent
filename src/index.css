@@ -8,4 +8,5 @@ body {
     justify-content: center;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    background: linear-gradient(to top, #10691A, #DE1317);
 }

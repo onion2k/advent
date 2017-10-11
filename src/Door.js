@@ -8,7 +8,9 @@ type Props = {
     onClick: Function,
     image: string,
     number: number,
-    bg: string
+    bg: string,
+    offsetX: number,
+    offsetY: number
 };
 
 type State = {
@@ -18,7 +20,9 @@ type State = {
     animating: boolean,
     bg: string,
     bgUrl: string,
-    backgroundPosition: string
+    backgroundPosition: string,
+    offsetX: number,
+    offsetY: number
 };
 
 class Door extends React.Component<Props, State> {
@@ -42,7 +46,9 @@ class Door extends React.Component<Props, State> {
             animating: false,
             bg: '',
             bgUrl: props.image,
-            backgroundPosition: "0px 0px"
+            backgroundPosition: "0px 0px",
+            offsetX: 0,
+            offsetY: 0
         };
 
         let pl = new Image();
@@ -60,12 +66,16 @@ class Door extends React.Component<Props, State> {
     }
 
     componentWillReceiveProps(nextProps:Object){
-        this.setState({ ready: nextProps.ready });
+        this.setState({ ready: nextProps.ready, offsetX: nextProps.offsetX, offsetY: nextProps.offsetY }, ()=>{
+            if (nextProps.offsetX > 0){
+                this.bgPos();
+            }
+        });
     }
 
     componentDidMount(){
 
-        window.addEventListener('resize', this.bgPos);
+        //window.addEventListener('resize', this.bgPos);
         
         this.refs.door.addEventListener('transitionstart', this.animating);
         this.refs.door.addEventListener('transitionend', this.animating);
@@ -78,7 +88,8 @@ class Door extends React.Component<Props, State> {
         let el = ReactDOM.findDOMNode(this);
         if (el instanceof HTMLElement) {
             let bounds = el.getBoundingClientRect();
-            this.setState({ backgroundPosition: (-1*bounds.left-1)+"px "+(-1*bounds.top-1)+"px" });
+            console.log(this.state.offsetX);
+            this.setState({ backgroundPosition: ((-1*bounds.left-1)+this.state.offsetX)+"px "+(-1*bounds.top-1)+"px" });
         } else {
             return;            
         }

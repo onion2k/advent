@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
 import Door from './Door.js';
 
@@ -13,14 +14,18 @@ type State = {
     doors: Array<{ number: number, image: string, open: boolean }>,
     ready: boolean,
     door: number,
-    error: boolean
+    error: boolean,
+    calendarOffsetX: number,
+    calendarOffsetY: number
 };
 
 class App extends React.Component<Props, State> {
 
     onClick: Function;
     componentWillMount: Function;
-
+    componentDidMount: Function;
+    bgPos: Function;
+    
     constructor() {
 
         super();
@@ -31,11 +36,15 @@ class App extends React.Component<Props, State> {
             ready: false,
             doors: [],
             door: 0,
-            error: false
+            error: false,
+            calendarOffsetX: 0,
+            calendarOffsetY: 0
         }
 
         this.onClick = this.onClick.bind(this);
-
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.bgPos = this.bgPos.bind(this);
+        
     }
 
     componentWillMount(){
@@ -92,9 +101,25 @@ class App extends React.Component<Props, State> {
         this.setState({ ready: true });
     }
 
-    onClick(door:number):boolean{
+    componentDidMount(){
 
-        console.log(this.state.door);
+        window.addEventListener('resize', this.bgPos);
+
+        this.bgPos();
+        
+    }
+
+    bgPos(){
+        let el = ReactDOM.findDOMNode(this);
+        if (el instanceof HTMLElement) {
+            let bounds = el.getBoundingClientRect();
+            this.setState({ calendarOffsetX: bounds.left, calendarOffsetY: bounds.top });
+        } else {
+            return;            
+        }
+    }
+        
+    onClick(door:number):boolean{
 
         if (door===(this.state.door+1)){
             this.setState({ door: door });
@@ -108,6 +133,8 @@ class App extends React.Component<Props, State> {
 
     render() {
 
+        console.log("R", this.state.calendarOffsetX)
+
         let style = {};
         let doors;
 
@@ -120,11 +147,11 @@ class App extends React.Component<Props, State> {
             if (this.state.ready===true) {
                 style = { backgroundImage: 'url('+this.state.bgUrl+')' };
             } else {
-                style = { backgroundColor: '#444' };                
+                style = { backgroundColor: '#fff' };                
             }
     
             doors = this.state.doors.map((door)=>{
-                return <Door key={door.number} onClick={this.onClick} ready={ this.state.ready } bg={ this.state.bgUrl } {...door}></Door>
+                return <Door key={door.number} onClick={this.onClick} ready={ this.state.ready } bg={ this.state.bgUrl } offsetX={this.state.calendarOffsetX} offsetY={this.state.calendarOffsetY} {...door}></Door>
             })
     
         }
