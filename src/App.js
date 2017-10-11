@@ -113,7 +113,7 @@ class App extends React.Component<Props, State> {
         let el = ReactDOM.findDOMNode(this);
         if (el instanceof HTMLElement) {
             let bounds = el.getBoundingClientRect();
-            this.setState({ calendarOffsetX: bounds.left, calendarOffsetY: bounds.top });
+            this.setState({ calendarOffsetX: bounds.left+5, calendarOffsetY: bounds.top+5 });
         } else {
             return;            
         }
@@ -132,8 +132,6 @@ class App extends React.Component<Props, State> {
     }
 
     render() {
-
-        console.log("R", this.state.calendarOffsetX)
 
         let style = {};
         let doors;

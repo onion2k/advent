@@ -8,5 +8,6 @@ body {
     justify-content: center;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    background: linear-gradient(to top, #10691A, #DE1317);
+    background-image: url('/img/Ice.png');
+    background-size: 250px;
 }

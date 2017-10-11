@@ -74,8 +74,6 @@ class Door extends React.Component<Props, State> {
     }
 
     componentDidMount(){
-
-        //window.addEventListener('resize', this.bgPos);
         
         this.refs.door.addEventListener('transitionstart', this.animating);
         this.refs.door.addEventListener('transitionend', this.animating);
@@ -88,8 +86,7 @@ class Door extends React.Component<Props, State> {
         let el = ReactDOM.findDOMNode(this);
         if (el instanceof HTMLElement) {
             let bounds = el.getBoundingClientRect();
-            console.log(this.state.offsetX);
-            this.setState({ backgroundPosition: ((-1*bounds.left-1)+this.state.offsetX)+"px "+(-1*bounds.top-1)+"px" });
+            this.setState({ backgroundPosition: ((-1*bounds.left)+this.state.offsetX)+"px "+((-1*bounds.top)+this.state.offsetY)+"px" });
         } else {
             return;            
         }
