@@ -52,9 +52,7 @@ class App extends React.Component<Props, State> {
         let calendar:string = window.location.hash.substring(1);
 
         if (!calendar) {
-            this.setState({
-                error: true
-            });
+            calendar = 'xmas';
         }
 
         let doorInt:number = parseInt(localStorage.getItem('door'), 10);
