@@ -1,17 +1,18 @@
 .Advent {
     width: 84vw;
-    height: 84vh;
+    height: 90vh;
     border: 5px solid #fff;
     border-radius: 1vh;
-    margin: 5vh auto;
+    margin: 2vh auto;
     padding: 3vh;
     display: grid;
-    grid-template-columns: repeat(4, 15vh);
-    grid-template-rows: repeat(6, 15vh);
-    grid-gap: 1vh;
+    grid-template-columns: repeat(3, 27vw);
+    grid-template-rows: repeat(8, 10vh);
+    grid-column-gap: 2vw;
+    grid-row-gap: 2vw;
     justify-content: center;
     background-repeat: no-repeat;
-    background-size: 100vw auto;
+    background-size: auto 100vh;
     background-position: 0px 0px;
 }
 
@@ -19,8 +20,8 @@
     text-align: center;
     font-family: 'Lobster Two';
     font-size: 2.0rem;
-    grid-column: span 4;
-    grid-row: span 6;
+    grid-column: span 3;
+    grid-row: span 8;
     align-self: center;
     justify-self: center;
     background-color: #f44;
@@ -32,12 +33,31 @@
 .Error > p {
     font-size: 1.4rem;
 }
-    
-@media only screen and (min-aspect-ratio: 1/1) {
-    /* Landscape */
+
+@media only screen and (min-width: 600px) {
     .Advent {
+        grid-template-columns: repeat(4, 20vw);
+        grid-template-rows: repeat(6, 13vh);
+        grid-column-gap: 2vw;
+        grid-row-gap: 2vw;
+        background-size: auto 100vh;
+    }
+    .Error {
+        grid-column: span 4;
+        grid-row: span 6;
+    }   
+}
+
+
+@media only screen and (min-width: 1000px) {
+    .Advent {
+        width: 70vw;
+        height: 86vh;
+        padding: 2vh 0 4vh 0;
         grid-template-columns: repeat(5, 16vh);
         grid-template-rows: repeat(5, 16vh);
+        grid-column-gap: 2vh;
+        grid-row-gap: 2vh;
     }
     .Error {
         grid-column: span 5;

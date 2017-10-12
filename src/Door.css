@@ -15,7 +15,7 @@
     border-top: 1px dotted #ddd;
     border-bottom: 1px dotted #ddd;
     background-repeat: no-repeat;
-    background-size: 100vw auto;
+    background-size: auto 100vh;
     color: #fff;
     display: grid;
     align-content: center;
@@ -30,8 +30,8 @@
     cursor: pointer;
 }
 
-@media only screen and (min-aspect-ratio: 1/1) {
-
+@media only screen and (min-width: 1000px) {
+    
     .double {
         grid-column: span 2;
         perspective: 2000px;
