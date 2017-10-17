@@ -119,6 +119,11 @@ class App extends React.Component<Props, State> {
         
     onClick(door:number):boolean{
 
+        let date = new Date('2017-12-09');
+
+        if (date.getMonth()!==11) { return false; }
+        if (date.getDate() < door) { return false; }
+
         if (door===(this.state.door+1)){
             this.setState({ door: door });
             localStorage.setItem('door', String(door));

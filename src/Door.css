@@ -74,6 +74,25 @@
     z-index: 99;
 }
 
+.rattle {
+    animation-iteration-count: 5;
+    animation-duration: 0.3s;
+    animation-name: rattling;
+}
+
+@keyframes rattling {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(-15deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+
 .animating {
     z-index: 99;
 }

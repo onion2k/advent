@@ -22,7 +22,8 @@ type State = {
     bgUrl: string,
     backgroundPosition: string,
     offsetX: number,
-    offsetY: number
+    offsetY: number,
+    rattle: boolean
 };
 
 class Door extends React.Component<Props, State> {
@@ -31,6 +32,7 @@ class Door extends React.Component<Props, State> {
     componentWillReceiveProps: Function;
     componentDidMount: Function;
     bgPos: Function;
+    rattling: Function;
     animating: Function;
     onClick: Function;
     render: Function;
@@ -48,7 +50,8 @@ class Door extends React.Component<Props, State> {
             bgUrl: props.image,
             backgroundPosition: "0px 0px",
             offsetX: 0,
-            offsetY: 0
+            offsetY: 0,
+            rattle: false
         };
 
         let pl = new Image();
@@ -56,6 +59,7 @@ class Door extends React.Component<Props, State> {
         pl.src = this.props.image;
 
         this.onClick = this.onClick.bind(this);
+        this.rattling = this.rattling.bind(this);
         this.animating = this.animating.bind(this);
         this.bgPos = this.bgPos.bind(this);
 
@@ -77,7 +81,8 @@ class Door extends React.Component<Props, State> {
         
         this.refs.door.addEventListener('transitionstart', this.animating);
         this.refs.door.addEventListener('transitionend', this.animating);
-
+        this.refs.door.addEventListener('animationend', this.rattling);
+        
         this.bgPos();
         
     }
@@ -93,12 +98,19 @@ class Door extends React.Component<Props, State> {
     }
 
     animating () {
+        console.log('Done')
         this.setState({animating: !this.state.animating});
+    }
+
+    rattling () {
+        this.setState({rattle: false});
     }
 
     onClick(){
         if (this.state.clickCallback(this.props.number)){
             this.setState({ open: !this.state.open, animating: !this.state.animating });
+        } else {
+            this.setState({ open: false, animating: true, rattle: true });
         }
     }
 
@@ -112,7 +124,7 @@ class Door extends React.Component<Props, State> {
 
         return (
             <div className={'Window'+(this.state.open===true?' opened':'')+(this.state.animating===true?' animating':'')+(this.props.number===24?' double':'')}>
-                <div ref="door" className={'Door'+(this.state.open===true?' open':'')} onClick={ this.onClick } style={{ backgroundPosition: this.state.backgroundPosition, backgroundImage: 'url('+this.props.bg+')' }}>
+                <div ref="door" className={'Door'+(this.state.open===true?' open':'')+(this.state.rattle===true?' rattle':'')} onClick={ this.onClick } style={{ backgroundPosition: this.state.backgroundPosition, backgroundImage: 'url('+this.props.bg+')' }}>
                     <div className="front">
                         { this.props.number }
                     </div>
