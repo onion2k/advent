@@ -76,7 +76,7 @@
 
 .rattle {
     animation-iteration-count: 5;
-    animation-duration: 0.3s;
+    animation-duration: 0.25s;
     animation-name: rattling;
 }
 
@@ -85,7 +85,7 @@
         transform: rotateY(0deg);
     }
     50% {
-        transform: rotateY(-15deg);
+        transform: rotateY(-25deg);
     }
     100% {
         transform: rotateY(0deg);

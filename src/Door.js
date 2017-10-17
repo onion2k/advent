@@ -98,20 +98,23 @@ class Door extends React.Component<Props, State> {
     }
 
     animating () {
-        console.log('Done')
         this.setState({animating: !this.state.animating});
     }
 
     rattling () {
-        this.setState({rattle: false});
+        this.setState({animating: false, rattle: false});
     }
 
     onClick(){
+
+        if (this.state.open===true) { return; }
+
         if (this.state.clickCallback(this.props.number)){
             this.setState({ open: !this.state.open, animating: !this.state.animating });
         } else {
             this.setState({ open: false, animating: true, rattle: true });
         }
+
     }
 
     render() {
