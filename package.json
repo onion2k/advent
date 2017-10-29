@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-youtube": "^7.5.0"
   },
   "devDependencies": {
     "flow-bin": "^0.56.0",
@@ -15,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "profile": "react-app-rewired build",
-    "build":"react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "flow": "flow"

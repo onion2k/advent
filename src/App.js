@@ -18,7 +18,7 @@ type State = {
     error: boolean,
     calendarOffsetX: number,
     calendarOffsetY: number,
-    lightboxsrc: string
+    lightboxsrc: number
 };
 
 class App extends React.Component<Props, State> {
@@ -42,7 +42,7 @@ class App extends React.Component<Props, State> {
             error: false,
             calendarOffsetX: 0,
             calendarOffsetY: 0,
-            lightboxsrc: ''
+            lightboxsrc: 0
         }
 
         this.onClick = this.onClick.bind(this);
@@ -137,9 +137,8 @@ class App extends React.Component<Props, State> {
 
     }
 
-    lightbox(src) {
-        console.log('lightbox', src);
-        this.setState({ lightboxsrc: src });
+    lightbox(door:number) {
+        this.setState({ lightboxsrc: door });
     }
 
     render() {
@@ -174,10 +173,12 @@ class App extends React.Component<Props, State> {
     
         }
 
+        let lightbox = this.state.doors.find((door)=>{ return door.number === this.state.lightboxsrc });
+
         return (
             <div className="Advent" style={ style }>
                 { doors }
-                <Lightbox src={this.state.lightboxsrc} />
+                <Lightbox src={ lightbox } />
             </div>
         );
     }

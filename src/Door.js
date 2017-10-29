@@ -6,6 +6,7 @@ import './Door.css';
 
 type Props = {
     onClick: Function,
+    lightbox: Function,
     image: string,
     number: number,
     bg: string,
@@ -124,17 +125,7 @@ class Door extends React.Component<Props, State> {
     }
 
     activate() {
-        switch (this.state.action) {
-            case "img":
-                this.props.lightbox(this.state.src);
-                break;
-            case "video":
-                break;
-            case "html":
-                break;
-            default:
-                break;
-        }
+        this.props.lightbox(this.props.number);
     }
 
     render() {

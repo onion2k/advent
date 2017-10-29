@@ -1,4 +1,5 @@
 import React from 'react';
+import YouTube from 'react-youtube';
 import './Lightbox.css';
 
 class Lightbox extends React.Component {
@@ -9,7 +10,8 @@ class Lightbox extends React.Component {
 
         this.state = {
             open: false,
-            src: ''
+            src: '',
+            content: null
         }
 
         this.onClick = this.onClick.bind(this);
@@ -17,9 +19,41 @@ class Lightbox extends React.Component {
     }
 
     componentWillReceiveProps(nextProps){
-        let open = true;
-        if (nextProps.src==='') { open = false }
-        this.setState({ src: nextProps.src, open: open });
+
+        if (nextProps.src===undefined) {
+            this.setState({ content: null, open: false });
+            return;
+        }
+
+        switch(nextProps.src.action) {
+            case "img":
+                this.setState({ content: <img src={ nextProps.src.src } alt="Merry Christmas" />, open: true });
+                break;
+            case "youtube":
+                let opts = {
+                    height: '390',
+                    width: '640',
+                    playerVars: {
+                        autoplay: 1
+                    }
+                }
+                let content = <YouTube videoId={ nextProps.src.src } opts={ opts } />
+                this.setState({ content: content, open: true });
+                break;
+            case "html":
+                console.log('html');
+                fetch(nextProps.src.src).then((fragment) => {
+                    return fragment.text();
+                }).then((html) => {
+                    let content = () => { return { __html: html } };
+                    this.setState({ content: <div dangerouslySetInnerHTML={ content() } />, open: true });
+                })
+            break;
+            default:
+                this.setState({ content: null, open: false });                
+                break;
+        }
+
     }
 
     onClick(){
@@ -28,11 +62,11 @@ class Lightbox extends React.Component {
 
     render() {
 
-        const style = { display: (this.state.open===true) ? 'grid' : 'none' }
+        let style = { display: (this.state.open===true) ? 'grid' : 'none' }
 
         return (
             <div className="Lightbox" style={style} onClick={ this.onClick }>
-                <h1>Lightbox</h1>
+                { this.state.content }
             </div>
         );
     }
