@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import Door from './Door.js';
+import Lightbox from './Lightbox.js';
 
 declare var Raven: any;
 
@@ -16,12 +17,14 @@ type State = {
     door: number,
     error: boolean,
     calendarOffsetX: number,
-    calendarOffsetY: number
+    calendarOffsetY: number,
+    lightboxsrc: string
 };
 
 class App extends React.Component<Props, State> {
 
     onClick: Function;
+    lightbox: Function;
     componentWillMount: Function;
     componentDidMount: Function;
     bgPos: Function;
@@ -38,10 +41,12 @@ class App extends React.Component<Props, State> {
             door: 0,
             error: false,
             calendarOffsetX: 0,
-            calendarOffsetY: 0
+            calendarOffsetY: 0,
+            lightboxsrc: ''
         }
 
         this.onClick = this.onClick.bind(this);
+        this.lightbox = this.lightbox.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.bgPos = this.bgPos.bind(this);
         
@@ -132,6 +137,11 @@ class App extends React.Component<Props, State> {
 
     }
 
+    lightbox(src) {
+        console.log('lightbox', src);
+        this.setState({ lightboxsrc: src });
+    }
+
     render() {
 
         let style = {};
@@ -150,7 +160,16 @@ class App extends React.Component<Props, State> {
             }
     
             doors = this.state.doors.map((door)=>{
-                return <Door key={door.number} onClick={this.onClick} ready={ this.state.ready } bg={ this.state.bgUrl } offsetX={this.state.calendarOffsetX} offsetY={this.state.calendarOffsetY} {...door}></Door>
+                return <Door 
+                    key={door.number} 
+                    onClick={this.onClick} 
+                    lightbox={this.lightbox} 
+                    ready={ this.state.ready } 
+                    bg={ this.state.bgUrl } 
+                    offsetX={this.state.calendarOffsetX} 
+                    offsetY={this.state.calendarOffsetY} 
+                    {...door}
+                ></Door>
             })
     
         }
@@ -158,6 +177,7 @@ class App extends React.Component<Props, State> {
         return (
             <div className="Advent" style={ style }>
                 { doors }
+                <Lightbox src={this.state.lightboxsrc} />
             </div>
         );
     }

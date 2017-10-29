@@ -19,6 +19,8 @@ type State = {
     open: boolean,
     animating: boolean,
     bg: string,
+    action: string,
+    src: string,
     bgUrl: string,
     backgroundPosition: string,
     offsetX: number,
@@ -29,6 +31,7 @@ type State = {
 class Door extends React.Component<Props, State> {
 
     onLoad: Function;
+    activate: Function;
     componentWillReceiveProps: Function;
     componentDidMount: Function;
     bgPos: Function;
@@ -47,6 +50,8 @@ class Door extends React.Component<Props, State> {
             open: props.open,
             animating: false,
             bg: '',
+            action: props.action,
+            src: props.src,
             bgUrl: props.image,
             backgroundPosition: "0px 0px",
             offsetX: 0,
@@ -59,6 +64,7 @@ class Door extends React.Component<Props, State> {
         pl.src = this.props.image;
 
         this.onClick = this.onClick.bind(this);
+        this.activate = this.activate.bind(this);
         this.rattling = this.rattling.bind(this);
         this.animating = this.animating.bind(this);
         this.bgPos = this.bgPos.bind(this);
@@ -117,12 +123,26 @@ class Door extends React.Component<Props, State> {
 
     }
 
+    activate() {
+        switch (this.state.action) {
+            case "img":
+                this.props.lightbox(this.state.src);
+                break;
+            case "video":
+                break;
+            case "html":
+                break;
+            default:
+                break;
+        }
+    }
+
     render() {
 
         let style = {};
 
         if (this.state.ready) {
-            style = { backgroundImage: 'url('+this.state.bg+')' };
+            style = { cursor: 'pointer', backgroundImage: 'url('+this.state.bg+')' };
         }
 
         return (
@@ -133,7 +153,7 @@ class Door extends React.Component<Props, State> {
                     </div>
                     <div className="back">Merry Christmas</div>
                 </div>
-                <div className="Picture" style={ style }></div>
+                <div className="Picture" onClick={ this.activate } style={ style }></div>
             </div>
         );
     }
