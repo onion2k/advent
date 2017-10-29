@@ -67,10 +67,10 @@
 
 @media only screen and (min-width: 1200px) {
     .Advent {
-        width: 84vw;
+        width: 70vw;
         height: 86vh;
         padding: 2vh 0 4vh 0;
-        grid-template-columns: repeat(5, 14vw);
+        grid-template-columns: repeat(5, 12vw);
         grid-template-rows: repeat(5, 16vh);
         grid-column-gap: 2vh;
         grid-row-gap: 2vh;

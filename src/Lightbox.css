@@ -18,3 +18,17 @@
     border: 2px solid #ffffff;
     border-radius: 5px;
 }
+
+.Lightbox > div {
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.Lightbox > div > div > h1 {
+    margin: 0;
+    background-color: #f88;
+}

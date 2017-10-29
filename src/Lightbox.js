@@ -41,7 +41,6 @@ class Lightbox extends React.Component {
                 this.setState({ content: content, open: true });
                 break;
             case "html":
-                console.log('html');
                 fetch(nextProps.src.src).then((fragment) => {
                     return fragment.text();
                 }).then((html) => {
@@ -57,7 +56,7 @@ class Lightbox extends React.Component {
     }
 
     onClick(){
-        this.setState({ open: !this.state.open });
+        this.setState({ open: false, content: null });
     }
 
     render() {
