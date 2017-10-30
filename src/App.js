@@ -178,7 +178,7 @@ class App extends React.Component<Props, State> {
         return (
             <div className="Advent" style={ style }>
                 { doors }
-                <Lightbox src={ lightbox } />
+                <Lightbox src={ lightbox } lightbox={ this.lightbox } />
             </div>
         );
     }

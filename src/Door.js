@@ -118,6 +118,7 @@ class Door extends React.Component<Props, State> {
 
         if (this.state.clickCallback(this.props.number)){
             this.setState({ open: !this.state.open, animating: !this.state.animating });
+            this.props.lightbox(this.props.number);
         } else {
             this.setState({ open: false, animating: true, rattle: true });
         }

@@ -57,6 +57,7 @@ class Lightbox extends React.Component {
 
     onClick(){
         this.setState({ open: false, content: null });
+        this.props.lightbox(0);
     }
 
     render() {
