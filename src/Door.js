@@ -77,7 +77,9 @@ class Door extends React.Component<Props, State> {
     }
 
     componentWillReceiveProps(nextProps:Object){
-        this.setState({ ready: nextProps.ready, offsetX: nextProps.offsetX, offsetY: nextProps.offsetY }, ()=>{
+        let offsetX = nextProps.offsetX + 3;
+        let offsetY = nextProps.offsetY + 4;
+        this.setState({ ready: nextProps.ready, offsetX: offsetX, offsetY: offsetY }, ()=>{
             if (nextProps.offsetX > 0){
                 this.bgPos();
             }
@@ -98,7 +100,9 @@ class Door extends React.Component<Props, State> {
         let el = ReactDOM.findDOMNode(this);
         if (el instanceof HTMLElement) {
             let bounds = el.getBoundingClientRect();
-            this.setState({ backgroundPosition: ((-1*bounds.left)+this.state.offsetX)+"px "+((-1*bounds.top)+this.state.offsetY)+"px" });
+            this.setState({ 
+                backgroundPosition: ((-1*bounds.left)+this.state.offsetX)+"px "+((-1*bounds.top)+this.state.offsetY)+"px" 
+            });
         } else {
             return;            
         }

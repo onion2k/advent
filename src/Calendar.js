@@ -38,8 +38,6 @@ class Calendar extends React.Component<Props, State> {
 
         if (!match.params.calendar) { error = true; }
 
-        console.log(match)
-
         this.state = {
             cal: match.params.calendar,
             bg: '',
@@ -63,8 +61,6 @@ class Calendar extends React.Component<Props, State> {
     componentWillMount(){
 
         let calendar:string = this.state.cal;
-
-        console.log(calendar);
 
         if (!calendar) {
             calendar = 'xmas';
@@ -126,7 +122,7 @@ class Calendar extends React.Component<Props, State> {
         let el = ReactDOM.findDOMNode(this);
         if (el instanceof HTMLElement) {
             let bounds = el.getBoundingClientRect();
-            this.setState({ calendarOffsetX: bounds.left+5, calendarOffsetY: bounds.top+5 });
+            this.setState({ calendarOffsetX: bounds.left, calendarOffsetY: bounds.top });
         } else {
             return;            
         }
