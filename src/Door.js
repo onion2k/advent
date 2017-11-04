@@ -91,9 +91,9 @@ class Door extends React.Component<Props, State> {
         this.refs.door.addEventListener('transitionstart', this.animating);
         this.refs.door.addEventListener('transitionend', this.animating);
         this.refs.door.addEventListener('animationend', this.rattling);
-        
+
         this.bgPos();
-        
+
     }
 
     bgPos(){

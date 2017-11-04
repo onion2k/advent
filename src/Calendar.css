@@ -80,3 +80,14 @@
         grid-row: span 5;
     }   
 }
+
+.reset {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    border-radius: 0 0 5px 0;
+    font-family: 'Lobster Two';
+    background-color: white;
+    cursor: pointer;
+}

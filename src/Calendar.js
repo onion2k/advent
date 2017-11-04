@@ -29,14 +29,13 @@ class Calendar extends React.Component<Props, State> {
     componentWillMount: Function;
     componentDidMount: Function;
     bgPos: Function;
+    reset: Function;
 
     constructor({ match }) {
     
         super();
 
         let error = false;
-
-        if (!match.params.calendar) { error = true; }
 
         this.state = {
             cal: match.params.calendar,
@@ -55,6 +54,7 @@ class Calendar extends React.Component<Props, State> {
         this.lightbox = this.lightbox.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.bgPos = this.bgPos.bind(this);
+        this.reset = this.reset.bind(this);
         
     }
 
@@ -127,7 +127,15 @@ class Calendar extends React.Component<Props, State> {
             return;            
         }
     }
-        
+
+    reset(door:number){
+        localStorage.setItem('door', "0" );
+        let doors = this.state.doors;
+        doors.forEach((door) => { door.open = false; });
+        this.setState({ door: 0, doors: doors });
+        window.location.reload();
+    }
+       
     onClick(door:number):boolean{
 
         // if (date.getMonth()!==11) { return false; }
@@ -185,6 +193,7 @@ class Calendar extends React.Component<Props, State> {
             <div className="Advent" style={ style }>
                 { doors }
                 <Lightbox src={ lightbox } lightbox={ this.lightbox } />
+                <div className="reset" onClick={this.reset}>Reset</div>
             </div>
         );
     }
