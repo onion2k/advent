@@ -3,9 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Door from './Door.js';
 import Lightbox from './Lightbox.js';
+import GithubLink from './GithubLink.js';
+import Reset from './Reset.js';
 import './Calendar.css';
 
 declare var Raven: any;
+
+const date = new Date();
 
 type Props = {};
 
@@ -138,8 +142,7 @@ class Calendar extends React.Component<Props, State> {
        
     onClick(door:number):boolean{
 
-        // if (date.getMonth()!==11) { return false; }
-        // if (date.getDate() < door) { return false; }
+        if (date.getMonth()===11 && date.getDate() < door) { return false; }
 
         if (door===(this.state.door+1)){
             this.setState({ door: door });
@@ -193,7 +196,8 @@ class Calendar extends React.Component<Props, State> {
             <div className="Advent" style={ style }>
                 { doors }
                 <Lightbox src={ lightbox } lightbox={ this.lightbox } />
-                <div className="reset" onClick={this.reset}>Reset</div>
+                <GithubLink date={date} />
+                <Reset date={date} reset={this.reset} />
             </div>
         );
     }
