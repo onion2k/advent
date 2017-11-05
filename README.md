@@ -61,11 +61,13 @@ To deploy your advent calendar use `npm run build` to make an optimised version 
 
 If you're just using a single advent calendar then you don't need to worry about routing, but if you have more than one you'll need to make every route point to index.html (this is standard with React, Angular, etc).
 
+---
 ### Notes
 
 * Remove the Flattr meta tag from index.html if you're deploying to live. You don't want that.
 * Add a favicon to your calendar.
 * The open door is stored using localStorage, so it will be the same across all calendars on the same URL. Use different domains if that's a problem.
+* The Reset and Github corner links will not be displayed in December.
 
 ---
 If you use this advent calendar app why not click on Flattr to fund my code (well, mince pies actually, but they power my code). https://flattr.com/@onion2k
